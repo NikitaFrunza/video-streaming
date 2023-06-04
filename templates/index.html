@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Streaming</title>
+  <style>
+    /* Reset browser default styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set background color and font family */
+    body {
+      background-color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Style for the video container */
+    #video-container {
+      position: relative;
+      margin: auto;
+      width: 80%;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    /* Style for the video stream */
+    #video-stream {
+      display: block;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Style for the title */
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2em;
+      color: #444;
+      text-shadow: 1px 1px #fff;
+    }
+
+    /* Style for the capture button */
+    #capture-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8em;
+    }
+
+    /* Style for the record button */
+    #record-button {
+      position: absolute;
+      top: 10px;
+      right: 80px;
+      padding: 5px 10px;
+      background-color: #dc3545;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8em;
+    }
+
+    /* Style for the footer */
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8em;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Video Streaming</h1>
+  
+  <div id="video-container">
+    <img id="video-stream" src="{{ url_for('video_feed') }}" alt="Video Stream" />
+    <form method="post" action="{{ url_for('tasks') }}">
+      <input id="capture-button" type="submit" value="Capture" name="capture"/>
+      <input id="record-button" type="submit" value="Record" name="rec"/>
+    </form>
+  </div>
+
+  <footer>&copy; 2023 - All rights reserved.</footer>
+</body>
+</html>
